@@ -2,7 +2,7 @@ nombre_contenedor           = "miapache"
 #cuota_de_cpu                = 1024
 repo_imagen_del_contenedor  = "httpd"
 tag_imagen_del_contenedor   = "latest"
-variables_entorno           = [
+variables_de_entorno        = [
                                     {
                                         nombre = "VAR1"
                                         valor  = "valor1"

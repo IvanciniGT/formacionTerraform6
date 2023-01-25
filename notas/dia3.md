@@ -42,3 +42,14 @@ La parametrización en terraform se consigue a través de VARIABLES
 
 5. Si terraform no dispone del valor de una variable por ninguno
    de los medios anteriores: Lo pedirá por consola, manualmente.
+
+## Preferencia en el uso de las variables
+
+1. - Las suministradas manualmente con el arg --var
+2. - Las suministradas en ficheros con el arg --var-file
+3. - Las definidas en ficheros .auto.tfvars
+4. - Las definidas en el campo "default"
+5. - Las suministradas manualmente
+6. - SI terraform no consigue valor para una variable NO EJECUTA ! SE PARA !
+
+NO ES POSIBLE ejecutar un script de terraform con variables SIN ASIGNAR !
