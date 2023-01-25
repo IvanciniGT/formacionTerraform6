@@ -7,6 +7,9 @@ resource "docker_image" "mi_imagen" {
 resource "docker_container" "mi_contenedor" {
     name        = var.nombre_contenedor
     image       = docker_image.mi_imagen.image_id
+    #cpu_shares  = null
+                  # Terraform, haz como que esta propiedad no te la he suministrado
+                  # Es decir, tu no la pases al provider
     cpu_shares  = var.cuota_de_cpu
     # OPCION 1: 
     # env         = var.variables_de_entorno

@@ -1,6 +1,12 @@
 variable "nombre_contenedor" {
     description = "Nombre del contenedor que vamos a crear"
     type        = string
+    nullable    = false
+    validation {
+        condition       = length(regexall("^[a-z][a-z0-9_]{4,}$", var.nombre_contenedor)) == 1
+                            # regex101.com
+        error_message   = "El nombre del contenedor solo debe incluir caracteres en minúscula, guiones bajos y números. Debe comenzar por un caracter (en minúscula), y al menos debe tener 5 caracteres"
+    }
 }
 
 variable "cuota_de_cpu" {
@@ -9,6 +15,34 @@ variable "cuota_de_cpu" {
     # default     = 1024  # NO SE USA NUNCA EN SCRIPTS !!! PROHIBIDO !
                         # Entonces... para que sirve esto?
                         # Ya os lo contaré ! El JUEVES !
+    nullable    = true
+    validation {
+                          # Tengo que poner una EXPRESION que devuelva TRUE si el valor es aceptable
+        #condition       = var.cuota_de_cpu > 0
+                        # Condicional (como expresion, no como statement)
+                        # condicion                ? valor si se cumple la condicion : valor si no se cumple
+        condition       = var.cuota_de_cpu == null ? true                            : var.cuota_de_cpu > 0
+                                                                                        # true | false
+                            # Operadores relacionales: == != < > >= <= 
+                            # Operadores lógicos: && ||
+                                # MUCHO CUIDADO CON ESTOS !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                                # =====
+                                # En la mayor parte de los lenguajes de programación
+                                # el operador && es el operador "AND en cortocircuito"
+                                # And en cortocircuito? Si la condición1 no se cumple, la condicion2 no se evalua
+                                # And normal? Aunque la condición1 no se cumpla, la condición2 se evalua
+                                #               Esto nos puede dar problemas
+                                # El && de terraform ES NORMAL, no en CORTOCIRCUITO
+                                # var.cuota_de_cpu != null && var.cuota_de_cpu > 0
+                          # Mensaje que se mostrará si el valor NO ES ACEPTABLE
+                          # NOTAS: Aqui lo que ponemos son expresiones, que:
+                            # - Pueden incluir operadores
+                            # - Pueden hacer referencia la la variable que estamos validando.
+                            #   PERO A NINGUNA OTRA ! Limitación importante ! Que necesitará WORK AROUNDS = chapuzas !
+                            # - Podemos usar funciones de terraform:
+                            # https://developer.hashicorp.com/terraform/language/functions
+        error_message   = "El valor de la cuota de cpu debe ser extrictamente mayor que cero"
+    }
 }
 
 variable "repo_imagen_del_contenedor" {

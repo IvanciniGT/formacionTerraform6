@@ -1,1 +1,1 @@
-cuota_de_cpu                = 1024
+cuota_de_cpu                = null

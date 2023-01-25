@@ -52,4 +52,24 @@ La parametrización en terraform se consigue a través de VARIABLES
 5. - Las suministradas manualmente
 6. - SI terraform no consigue valor para una variable NO EJECUTA ! SE PARA !
 
+NO EXISTE EN TERRAFORM EL CONCEPTO DE VARIABLE OPCIONAL. TODA VARIABLE ES OBLIGATORIA / REQUERIDA
+
+
 NO ES POSIBLE ejecutar un script de terraform con variables SIN ASIGNAR !
+
+# Y si yo no quisiera en un momento dado asignar una couta de cpu de un contenedor?
+
+## Definir una variable como nullable
+
+    nullable = true | false
+
+Qué significa esto? Que la variable, aparte de tomar como valor, cualquiera del tipo definido,
+puede alternativamente tomar el valor "null"
+
+"null" es un valor más.
+
+Null NO significa como en otros lenguajes de programación que la variable está:
+sin asignar, vacia, desasignada
+
+Null significa que la variable tiene asignado el valor "null", que es otro valor, 
+Y un valor muy especial. 
