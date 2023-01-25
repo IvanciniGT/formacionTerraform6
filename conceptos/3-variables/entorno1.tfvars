@@ -1,4 +1,4 @@
-nombre_contenedor           = "miapache_Guay"
+nombre_contenedor           = "miapache"
 #cuota_de_cpu                = 10
 repo_imagen_del_contenedor  = "httpd"
 tag_imagen_del_contenedor   = "latest"
