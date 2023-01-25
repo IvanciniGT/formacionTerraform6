@@ -84,10 +84,26 @@ variable "variables_de_entorno" {
 variable "puertos_a_exponer" {
     description = "Puertos a exponer en el contenedor"
     type        = list(object({
-                                interno = number
-                                externo = number
-                                ip       = optional(string, "0.0.0.0")
+                                interno = number    # >0 && <32000
+                                externo = number    # >0 && <32000
+                                ip       = optional(string, "0.0.0.0")  # Que sea una IP regex
                                         # Nos permite definir propiedades no obligatorias
                                         # Si no se suministra un dato, se toma el valor por defecto
                               }))
+    validation {
+        condition       = alltrue( [ for puerto in var.puertos_a_exponer: puerto.interno >0 && puerto.interno <=32000 ] )
+        error_message   = "El puerto interno debe estar entre 1 y 32000"
+    }
+    
+    validation {
+        condition       = alltrue( [ for puerto in var.puertos_a_exponer: puerto.externo >0 && puerto.externo <=32000 ] )
+        error_message   = "El puerto externo debe estar entre 1 y 32000"
+    }
+    
+    validation {
+        condition       = alltrue( [ for puerto in var.puertos_a_exponer: 
+                                        length(regexall("^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$", puerto.ip)) == 1
+                                   ] )
+        error_message   = "La IP no tiene un formato válido"
+    }
 }
