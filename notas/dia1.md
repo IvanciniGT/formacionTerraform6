@@ -185,13 +185,13 @@ HCL es una sintaxis declarativa que toma conceptos tanto de JSON como de YAML
                                                             {}              La falta de "" para textos
 
 En HCL hay unas cuantas palabra (bloques) de primer nivel con las que vamos a trabajar:
-- terraform         MARTES
-- provider          MARTES
-- resource          MARTES
-    - provisioners  MIERCOLES / JUEVES
-- output            MARTES
-- variable          MARTES / MIERCOLES      ** ES LO MAS COMPLEJO, Y CON MUCHA DIFERENCIA, DE TERRAFORM **
-- locals            JUEVES
+- terraform         MARTES              √
+- provider          MARTES              √
+- resource          MARTES              √
+    - provisioners  MIERCOLES / JUEVES  √?
+- output            MARTES              √
+- variable          MARTES / MIERCOLES  √      ** ES LO MAS COMPLEJO, Y CON MUCHA DIFERENCIA, DE TERRAFORM **
+- locals            JUEVES              √
 - module            JUEVES, VIERNES
 ------- Empezar a trabajar con un CLOUD REAL
 - data              VIERNES
