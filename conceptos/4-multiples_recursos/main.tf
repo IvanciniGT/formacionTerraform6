@@ -57,3 +57,25 @@ resource "docker_container" "mi_balanceador" {
         external = 8090
     }
 }
+
+resource "docker_container" "mi_contenedor_mas_personalizado" {
+    # El count NO NOS SIRVE !
+    # En el count hemos de pasar un NUMERO 
+    # En este caso, vamos a echar mano de una vieja palabra conocida:
+    for_each    = var.contenedores_mas_personalizados # Este for_each solo admite: list(string) NO VALE PARA NADA !
+                                                  # Un mapa. PARA ESTO QUIERO USAR LOS FOR_EACH
+        # Al usar la palabra for_Each, tenemos a nuestra disposición una variable llamada: each
+        # A la que podemos pedir each.key y el each.value
+    # Este for_each NO SE PARECE EN NADA AL DE LOS DYNAMIC BLOCKS !
+    name    = each.key
+    image   = docker_image.mi_imagen.image_id
+    cpu_shares =  each.value.cuota_cpu
+                # each.value[ "cuota_cpu" ]
+                # each.value[ var.campo ]
+    
+    ports {
+        internal = 80
+        external = each.value.externo
+        ip = each.value.ip_address
+    }
+}
