@@ -79,3 +79,18 @@ resource "docker_container" "mi_contenedor_mas_personalizado" {
         ip = each.value.ip_address
     }
 }
+
+resource "docker_container" "mi_contenedor_mas_personalizado_2" {
+    count   = length(var.contenedores_mas_personalizados_2) 
+            // count.index
+    
+    name    = var.contenedores_mas_personalizados_2[count.index].nombre
+    image   = docker_image.mi_imagen.image_id
+    cpu_shares =  var.contenedores_mas_personalizados_2[count.index].cuota_cpu
+    
+    ports {
+        internal = 80
+        external = var.contenedores_mas_personalizados_2[count.index].externo
+        ip = var.contenedores_mas_personalizados_2[count.index].ip_address
+    }
+}
