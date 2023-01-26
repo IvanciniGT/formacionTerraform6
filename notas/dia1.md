@@ -203,7 +203,7 @@ Es harto COMPLEJO ! Me requiere un nivel de conocimientos de la INFRA y del PROV
 
 Esos scripts los vamos a suministrar como argumentos al programa TERRAFORM.
 A ese programa le podremos pedir que ejecute comandos sobre los scripts:
-- init          Descarga e instala el(los) PROVIDER(s) que se requiran ... y algo más que ya os contaré
+- init          Descarga e instala el(los) PROVIDER(s) que se requiran ... y algo más que ya os contaré: MODULOS !
 - validate      Valida la sintaxis del script en busca de errores
 - plan          CALCULA las tareas necesarias para conseguir que:
                     - la infra que tengo definida en mi script coincida con

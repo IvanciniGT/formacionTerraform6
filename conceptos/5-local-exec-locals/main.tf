@@ -105,3 +105,16 @@ resource "null_resource" "generador_archivo" {
     }
   }
 }
+
+/*
+resource "null_resource" "chapuzon_pero_a_veces_no_queda_otra" {
+
+  triggers = {
+    federico = timestamp() #uuid()
+  }
+
+  provisioner "local-exec" {
+    command = "echo Me ejecuto siempre"
+  }
+}
+*/

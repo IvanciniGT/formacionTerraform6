@@ -54,3 +54,39 @@ Host local
         inventario
         playbook
     
+
+## Llevamos desde el dia 1 montando: scripts de terraform
+
+A dia 4... a 30 mins del final de la clase os dire que LOS SCRIPTS DE TERRAFORM NO 
+SE DEBEN PARECER EN NADA A NADA DE LOS QUE HEMOS CREADO. NINGUNA TRAMPA !
+
+Es 100% cierto ! lo que estoy diciendo
+
+Cuando escribimos código de programación! el código lo tirais ahi en un fichero, linea tras linea?
+
+NO. Creamos componentes reutilizables: Función, Procedimiento, Método... MODULOS!
+Ahí es donde ponemos el código y la lógica.
+
+Y básicamente el programa que montamos luego lo que hace es ir llamando a esas funciones !
+
+Una función tiene: 
+    Nombre 
+    Datos de entrada
+    Datos de salida
+    
+    
+Un módulo de terraform contiene:
+    Datos de entrada                                    variable
+    Datos de salida                                     output
+    Recursos                                            resource
+    Providers que son los que crean los recursos        terraform > required_providers
+
+Qué tienen los "scripts" que hemos creado nosotros hasta ahora? 
+    Datos de entrada                                    variable
+    Datos de salida                                     output
+    Recursos                                            resource
+    Providers que son los que crean los recursos        terraform > required_providers
+    Configuración del provider                          provider
+    
+Sin saberlo, desde el día 1, lo que estabamos creando eran MODULOS !
+- Modulo para crear contenedores!
