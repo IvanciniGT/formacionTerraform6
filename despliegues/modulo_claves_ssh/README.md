@@ -61,3 +61,5 @@ module "mis_claves" {
 
 Y para acceder /crear ese servidor tendremos que darle la clave publica que queremos que quede instalada en ese servidor,
 para que posteriormente se pueda acceder a él.
+
+Quien tiene los datos de credenciales ->> CLI

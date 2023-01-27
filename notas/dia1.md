@@ -192,9 +192,9 @@ En HCL hay unas cuantas palabra (bloques) de primer nivel con las que vamos a tr
 - output            MARTES              √
 - variable          MARTES / MIERCOLES  √      ** ES LO MAS COMPLEJO, Y CON MUCHA DIFERENCIA, DE TERRAFORM **
 - locals            JUEVES              √
-- module            JUEVES, VIERNES
+- module            JUEVES, VIERNES.    √
 ------- Empezar a trabajar con un CLOUD REAL
-- data              VIERNES
+- data              VIERNES             √
 
 ## Nos pone facil (nos facilita) terraform el definir una infraestructura?
 
