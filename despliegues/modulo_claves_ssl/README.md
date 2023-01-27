@@ -43,7 +43,16 @@ Si existen.... y no se solicita la regeneración de claves,
 ```tf
 
 module "mis_claves" {
+    algorythm               = object({
+                                            name:       string
+                                            config:     any OPCION 1... en este caso particular es matar moscas a cañonazos
+                                            * config:     Optional(string)    OPCION2... esta es guay ya que TF hace autoconversion de tipos basicos
+                                            config_rsa:     number OPCION 3
+                                            config_ecdsa:   string
+                                      })
     
+    regenerate_keys         = bool
+    keys_folder             = string
 }
 
 ```
