@@ -38,3 +38,5 @@ module "mi_nginx" {
                                         }
                                   ]
 }
+
+// Para referirnos al modulo usamos la variable "module.NOMBRE.NOMBRE_OUTPUT"
